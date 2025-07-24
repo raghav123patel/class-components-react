@@ -8,27 +8,27 @@ class Fetching extends React.Component{
             loading: true,
             error: null,
         }
-    };
+    };  
 
-    async componentDidMount() {
+    async componentDidMount() {      
         console.log("component is mounted");
         const response = await fetch("https://jsonplaceholder.typicode.com/posts")
         const data = await response.json()
         console.log(data);
         this.setState({
-           data:data,   
+           data:data,       
             loading: true,
             
         })
-        console.log(...this.state.data);     
+        console.log(...this.state.data);          
         this.setState({
-            error: this.state.error,  
+            error: this.state.error,        
             loading: true ,
-        })
+        })    
         
     }
-render(){
-   return(
+render(){      
+   return(     
     <>
     <div>
         <h1> APIS DATA</h1>
