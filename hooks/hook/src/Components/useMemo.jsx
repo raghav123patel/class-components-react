@@ -1,34 +1,29 @@
-import { useState, useEffect } from "react";  
+import React,{useState, useMemo} from "react";
 
 
-function UseMemoExample() {
-    
-    const [counter, setCounter] = useState(0);
-    const [ number, setNumber] = useState(0);
-    let values =0;
-    function squareNumber(number){
-        values = number * number;
-        return values;
+export default function Memo(){
+
+    const[count, setCount]= useState(0);
+    const[dependentCount, setDependentCount]= useState(10);
+    let result=0;
+
+    function Calculate(){
+        for(let i=0; i<1000; i++){
+            result+=i;
+        }
+        console.log(result);
+        return result;
     }
+
+    let value= useMemo(Calculate,[dependentCount])
+
     
-    const numberValue = squareNumber(number);
-    console.log(numberValue);
-    const handleClick = () => {
-        setCounter(counter + 1);   
-    }   
-    useEffect(() => {
-        squareNumber();
-    }, [number]);
     return(
-        <>
         <div>
-            <input type="number" placeholder="enter the number" value={number} onChange={(e) => setNumber(e.target.value)}/>
-            <h1> squared number is: {values} </h1>
-            <button onClick={handleClick}> COUNT</button>
-            <h1> counting is: {counter} </h1>
+          <button onClick={()=>setCount(count+1)}>IncreaseCount</button>
+          <p>Count:{count}</p>
+          <button onClick={()=>setDependentCount(dependentCount+1)}>IncreaseDependent</button>
+          <p>Dependent Count:{dependentCount}</p>
         </div>
-        </>
     )
 }
-  
-export default UseMemoExample;

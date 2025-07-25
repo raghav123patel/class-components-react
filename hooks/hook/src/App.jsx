@@ -7,14 +7,15 @@ import UseMemoExample from './Components/useMemo'
 
 // import UseRefExample from './Components/useRef'
 
-
+import Form from "./Components/useReducer";
 function App() {
   
 
   return (
     <>
       {/* <UseRefExample/> */}
-      <UseMemoExample/>
+      {/* <UseMemoExample/> */}
+      <Form/>
       
       
       
