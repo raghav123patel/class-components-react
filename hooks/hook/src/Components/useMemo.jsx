@@ -15,7 +15,7 @@ export default function Memo(){
         return result;
     }
 
-    let value= useMemo(Calculate,[dependentCount])
+    let value= useMemo(Calculate,[dependentCount])  
 
     
     return(
